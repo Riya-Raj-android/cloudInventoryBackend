@@ -1,7 +1,10 @@
 
 # from flask import Flask, request, jsonify
 # from flask import render_template
+
+
 from flask import Flask, request, jsonify
+from flask_cors import CORS 
 
 from flask_jwt_extended import (
     JWTManager,
@@ -17,6 +20,9 @@ from werkzeug.security import (
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+CORS(app)
+
 app.config["JWT_SECRET_KEY"] = "inventory-secret-key"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = (
@@ -109,6 +115,7 @@ def add_product():
 
 @app.route("/products", methods=["GET"])
 def get_products():
+
 
     products = Product.query.all()
 
