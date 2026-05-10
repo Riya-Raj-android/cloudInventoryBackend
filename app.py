@@ -25,9 +25,10 @@ CORS(app)
 
 app.config["JWT_SECRET_KEY"] = "inventory-secret-key"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mssql+pyodbc://@localhost/InventoryDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes'
-)
+# app.config['SQLALCHEMY_DATABASE_URI'] = (
+#     'mssql+pyodbc://@localhost/InventoryDB?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes'
+# )
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///inventory.db'
 
 db = SQLAlchemy(app)
 jwt = JWTManager(app)
